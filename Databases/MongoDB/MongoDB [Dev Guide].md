@@ -78,7 +78,7 @@ db.moviesScratch.updateOne({
 These are the operators we can use when updating a document.\
 See the [MongoDB Update Operators](https://docs.mongodb.com/manual/reference/operator/update/) documentation.
 
-#### Examples
+#### Operator Examples
 
 ##### $set
 Fields to update/add in a document.
@@ -92,7 +92,21 @@ Will only update the field inside this object if the value is less than the curr
 ##### $max
 Only updates a field if the value being updated is more than the current value.
 
+##### $inc
+Increments the value of the field by the amount specified.
 
+<br><br>
+#### Working with Arrays
+There are various operators that are used specifically for Arrays. These can be found in the documentation for update operators.
+
+##### $push
+Add an item to an array.
+
+<br><br>
+#### Modifiers
+
+##### $each
+Can be used with the $push and $addToSet operators to append multiple items.
 
 
 <br><br>
