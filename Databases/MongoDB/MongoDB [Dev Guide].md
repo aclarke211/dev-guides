@@ -73,6 +73,24 @@ db.moviesScratch.updateOne({
 })
 ```
 
+<br><br>
+### Update Operators
+These are the operators we can use when updating a document.\
+See the [MongoDB Update Operators](https://docs.mongodb.com/manual/reference/operator/update/) documentation.
+
+#### Examples
+
+##### $set
+Fields to update/add in a document.
+
+##### $unset
+Remove a field from the document.
+
+##### $min
+Will only update the field inside this object if the value is less than the current value in the field.
+
+##### $max
+Only updates a field if the value being updated is more than the current value.
 
 
 
