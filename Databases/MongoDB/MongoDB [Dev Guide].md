@@ -52,7 +52,53 @@ db.movies.find({"genre": "Action"}, {"year": 0})
 <br><br>
 ## Updating Documents
 
-### Update Single Document
+### Operators & Modifiers
+These are the operators we can use when updating a document.\
+See the [MongoDB Update Operators](https://docs.mongodb.com/manual/reference/operator/update/) documentation.
+
+#### Operators
+
+##### $set
+Fields to update/add in a document.
+
+##### $unset
+Remove a field from the document.\
+If the field does not exist, then the command does nothing.
+```shell
+db.dbName.update({
+  "title": "Title to be removed"
+  }, {
+      $unset: {
+        "title": "",
+       "anotherFieldToRemove": ""
+      }
+  })
+```
+
+##### $min
+Will only update the field inside this object if the value is less than the current value in the field.
+
+##### $max
+Only updates a field if the value being updated is more than the current value.
+
+##### $inc
+Increments the value of the field by the amount specified.
+
+<br><br>
+#### Working with Arrays
+There are various operators that are used specifically for Arrays. These can be found in the documentation for update operators.
+
+##### $push
+Add an item to an array.
+
+<br><br>
+### Modifiers
+
+##### $each
+Can be used with the $push and $addToSet operators to append multiple items.
+
+<br><br>
+### Update a Single Document
 Documents within the same collection may not always have the same set of fields. Some may include fields that other documents do not have.
 
 We can update a document using the `updateOne()` command.
@@ -74,39 +120,27 @@ db.moviesScratch.updateOne({
 ```
 
 <br><br>
-### Update Operators
-These are the operators we can use when updating a document.\
-See the [MongoDB Update Operators](https://docs.mongodb.com/manual/reference/operator/update/) documentation.
+### Update Multiple Documents
+We can update multiple documents at a time by using the `updateMany()` command.
 
-#### Operator Examples
+The command will target all docments in the db which match the filter <sup>*(first argument)*</sup>.
 
-##### $set
-Fields to update/add in a document.
+```shell
+db.movieDetails.updateMany({
+  "rated": null
+}, {
+  $unset: {
+    "rated": ""
+  }
+})
+```
+<sup>*Remove the 'rated' fields from all of the documents in the db with a 'rated' value of 'null'.*</sup>
 
-##### $unset
-Remove a field from the document.
-
-##### $min
-Will only update the field inside this object if the value is less than the current value in the field.
-
-##### $max
-Only updates a field if the value being updated is more than the current value.
-
-##### $inc
-Increments the value of the field by the amount specified.
 
 <br><br>
-#### Working with Arrays
-There are various operators that are used specifically for Arrays. These can be found in the documentation for update operators.
+### Upserts
 
-##### $push
-Add an item to an array.
 
-<br><br>
-#### Modifiers
-
-##### $each
-Can be used with the $push and $addToSet operators to append multiple items.
 
 
 <br><br>
