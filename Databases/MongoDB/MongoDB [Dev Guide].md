@@ -1,14 +1,12 @@
-# MongoDB [Dev Guide]
+# MongoDB <span style="font-size: 1.25rem; color: grey">[Dev Guide]</span>
 
 ## General
 
 ### Cursor
-Essentially, the current result being returned, when many results are being returned from a query.
-
+Essentially, the current result being returned, when many results are being returned from a query.\
 A pointer to the current location in a result set. Is returned by the find() command.
 
-When many results are returned, they are retuned in batches.
-
+When many results are returned, they are retuned in batches.\
 Around 20 reults are returned per batch in MongoDB Compass.
 
 The cursor is the current result being returned in a batch.
