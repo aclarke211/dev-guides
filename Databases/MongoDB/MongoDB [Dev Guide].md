@@ -15,7 +15,7 @@ The cursor is the current result being returned in a batch.
 
 When another batch is requested in Mongo Shell a [getMore()]([https://www.google.com](https://docs.mongodb.com/manual/reference/command/getMore/#dbcmd.getMore)) method is called.
 <br>
-```js
+```shell
 it
 ```
 <sub>*(it is short for iterate')*</sub>
@@ -36,7 +36,7 @@ Only the fields in the query are returned from a projection.
 ### find()
 
 #### Find documents in a collection
-```js
+```shell
 db.movies.find({"mpaaRating": "PG-13"}).pretty()
 
 db.movies.find({"mpaaRating": "PG-13", "year": 2009}).pretty()
@@ -44,12 +44,12 @@ db.movies.find({"mpaaRating": "PG-13", "year": 2009}).pretty()
 
 #### Match all docs with "C" in wind.type
 Where wind is a document/object within a document.
-```js
+```
 db.100YWeatherSmall.find({"wind.type": "C"}).pretty()
 ```
 
 #### Match an array exactly (exact strings, exact order)
-```js
+```shell
 db.movies.find({"cast": ["Jeff Bridges", "Tim Robbins"]}).pretty()
 
 db.movieDetails.find({"writers": ["Ethan Coen", "Joel Coen"]}).pretty()
@@ -57,7 +57,7 @@ db.movieDetails.find({"writers": ["Ethan Coen", "Joel Coen"]}).pretty()
 
 
 #### Match a string in an array (any position)
-```js
+```shell
 db.movies.find({"cast": "Jeff Bridges"}).pretty()
 ```
 
@@ -66,12 +66,12 @@ db.movies.find({"cast": "Jeff Bridges"}).pretty()
 When inserting docs, an ObjectId will be automatically generated, unless we specifiy our own ID in the "_id" field.
 
 #### Insert into a DB called "moviesScratch"
-```js
+```shell
 db.moviesScratch.insertOne({title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726"})
 ```
 
 #### Supply our own ID
-```js
+```shell
 db.moviesScratch.insertOne({_id: "tt0084726", title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726"})
 ```
 
@@ -82,14 +82,14 @@ Used to insert multiple documents into a collection.
 
 #### First Argument is an array
 The array is an array of documents to insert.
-```js
+```shell
 db.insertMany([])
 ```
 
 #### Can give an optional second argument to insertMany (an options object/document)
 Options for the query of the type object/document.<br>
 Saying ordered: false, will prevent an insertMany command from erroring and stopping when it encounters an error such as a duplicate ID key.
-```js
+```shell
 db.insertMany([], { "ordered": false })
 ```
 
@@ -102,7 +102,7 @@ Stop connection in Mongo Shell
 ### use
 Use a DB in the MongoDB.
 
-```js
+```shell
 use <**DATABASE_NAME**>
 ```
 
@@ -110,7 +110,7 @@ use <**DATABASE_NAME**>
 <br><br>
 ### show
 List the collections in a database.
-```js
+```shell
 show collections
 ```
 
@@ -122,14 +122,14 @@ Get formatted results back.
 <br><br>
 ### .find()
 Return documents that match a query.
-```js
+```shell
 db.collectionName.find(QUERY)
 ```
 
 <br><br>
 ### count()
 Return the number of documents that match a query.
-```js
+```shell
 db.collectionName.count(QUERY)
 ```
 
@@ -140,7 +140,7 @@ db.collectionName.count(QUERY)
 ### Filter
 Filter Documents in a Collection.<br>
 They are && by default so only docs matching all values in the filter will be shown
-```js
+```shell
 {"mpaaRating": "PG-13", "year": 2009}
 ```
 
