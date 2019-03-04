@@ -1,4 +1,4 @@
-# MongoDB <span style="font-size: 1.25rem; color: grey">[Dev Guide]</span>
+# MongoDB [Dev Guide]
 
 ## General
 
