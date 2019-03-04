@@ -18,7 +18,7 @@ When another batch is requested in Mongo Shell a [getMore()]([https://www.google
 ```shell
 it
 ```
-<sub>*(it is short for iterate')*</sub>
+<sup>*(it is short for iterate')*</sup>
 
 <br><br>
 
@@ -28,6 +28,55 @@ Limit the fields that are returned in results documents. Allows you to only retu
 By defualt, all fields are returned from a request.
 
 Only the fields in the query are returned from a projection.
+
+Second argument to the find() method.
+
+By default, projects will also return "_id" fields from documents, along with the specified fields.
+
+```shell
+db.movies.find({"genre": "Action"}, {"title": 1})
+```
+<sup>*Will return all documents with the genre **"Action"**, however only the **"title"** and **"_id"** fileds will be included in the returned results for each document.*</sup>
+<br><br>
+The **1** stands for include this field. We can exclude a field by using a 0.
+```shell
+db.movies.find({"genre": "Action"}, {"title": 1, "_id": 0})
+```
+<sup>*The **"_id"** fields will now no longer be returned in the results.*</sup>
+
+Giving just a 0 in the projection will limit the fields returned in each document by excluding the fields specified.
+```shell
+db.movies.find({"genre": "Action"}, {"year": 0})
+```
+<sup>*The returned results will include all fields except the "**year** field.*</sup>
+
+
+<br><br>
+## Updating Documents
+
+### Update Single Document
+Documents within the same collection may not always have the same set of fields. Some may include fields that other documents do not have.
+
+We can update a document using the `updateOne()` command.
+
+First argument is a **filter** which defines the documents to target. When updating a single document, the first document in the collection matching the filter is returned.
+
+The second argument specifies the fields and value being set (updated) in the document.
+
+The `$set` operator is part ofthe `updateOne()` syntax which specifies the fields to be updated in the document.
+
+```shell
+db.moviesScratch.updateOne({
+  "title": "Rocky"
+}, {
+  $set: {
+    "director": "John G. Avildsen"
+  }
+})
+```
+
+
+
 
 
 <br><br>
@@ -60,6 +109,10 @@ db.movieDetails.find({"writers": ["Ethan Coen", "Joel Coen"]}).pretty()
 ```shell
 db.movies.find({"cast": "Jeff Bridges"}).pretty()
 ```
+
+<br><br>
+### .pretty()
+Get formatted results back.
 
 <br><br>
 ### insertOne()
@@ -100,7 +153,7 @@ Stop connection in Mongo Shell
 
 <br><br>
 ### use
-Use a DB in the MongoDB.
+Switch to a DB or Collection in the MongoDB.
 
 ```shell
 use <**DATABASE_NAME**>
@@ -113,11 +166,6 @@ List the collections in a database.
 ```shell
 show collections
 ```
-
-<br><br>
-### .pretty()
-Get formatted results back.
-
 
 <br><br>
 ### .find()
