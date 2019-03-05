@@ -69,7 +69,6 @@ db.movies.find({"genre": "Action"}, {"year": 0})
 ## Adding Docuemnts
 Insert documents into a database.
 
-<br><br>
 ### insertOne()
 When inserting docs, an ObjectId will be automatically generated, unless we specifiy our own ID in the "_id" field.
 
@@ -113,18 +112,15 @@ db.insertMany([], { "ordered": false })
 ```
 
 <br><br>
-## Updating Documents
-
-### Operators & Modifiers
+## Operators
 These are the operators we can use when updating a document.\
 See the [MongoDB Update Operators](https://docs.mongodb.com/manual/reference/operator/update/) documentation.
 
-#### Operators
 
-##### $set
+### $set
 Fields to update/add in a document.
 
-##### $unset
+### $unset
 Remove a field from the document.\
 If the field does not exist, then the command does nothing.
 ```shell
@@ -138,13 +134,13 @@ db.dbName.update({
   })
 ```
 
-##### $min
+#### $min
 Will only update the field inside this object if the value is less than the current value in the field.
 
-##### $max
+#### $max
 Only updates a field if the value being updated is more than the current value.
 
-##### $inc
+#### $inc
 Increments the value of the field by the amount specified.
 
 <br><br>
@@ -155,10 +151,14 @@ There are various operators that are used specifically for Arrays. These can be 
 Add an item to an array.
 
 <br><br>
-### Modifiers
+## Modifiers
 
-##### $each
+#### $each
 Can be used with the $push and $addToSet operators to append multiple items.
+
+
+<br><br>
+## Updating Documents
 
 <br><br>
 ### Update a Single Document
