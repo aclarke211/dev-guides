@@ -2,6 +2,22 @@
 
 ## General
 
+### Loading Data from JS File
+To load dataset from a Javascript file first navigate to the directory containing the dataset file using a terminal.
+
+```shell
+cd <**FILE_LOCATION**>
+```
+
+Connect to a database via MongoShell from within this directory.\
+Then use the `load()` MongoShell command to add the datset to the database.
+
+```shell
+load("dataset.js")
+```
+
+
+<br><br>
 ### Cursor
 Essentially, the current result being returned, when many results are being returned from a query.\
 A pointer to the current location in a result set. Is returned by the find() command.
@@ -48,6 +64,22 @@ db.movies.find({"genre": "Action"}, {"year": 0})
 ```
 <sup>*The returned results will include all fields except the "**year** field.*</sup>
 
+
+<br><br>
+## Adding Docuemnts
+Insert documents into a database.
+
+
+Add a single document to the database.
+```shell
+const doc = {"name": "Rocky", "year": 1976};
+db.dbName.insertOne(doc);
+```
+
+Add multiple documents to the database.
+```shell
+db.dbName.insertMany([doc1, doc2]);
+```
 
 <br><br>
 ## Updating Documents
@@ -139,8 +171,57 @@ db.movieDetails.updateMany({
 
 <br><br>
 ### Upserts
+Used to create new documents from within update commands.
+
+If `upsert: true` is defined as the third argument, a new document is created when no document matches the filter.
+
+If a document does match the filter, then that document is updated with the fields in the $set operator.
+
+```shell
+db.dbName.updateOne({
+  "name.last": data.lastName
+}, {
+  $set: data
+}, {
+  upsert: true
+})
+```
+<sup>*If the 'lasName' value in 'data' does not match any of the 'name.last' values in the documents, then a new document is created with with the values from 'data' as its fields.*</sup>
 
 
+<br><br>
+### Replacing Data
+We can [replace a document](https://docs.mongodb.com/manual/reference/method/db.collection.replaceOne/) by using the `replaceOne()` command.
+
+* The replacement document cannot contain update operators.
+* replaceOne will apply changes to only one document, the first found in the server that matches the filter expression, using the [$natural](https://docs.mongodb.com/manual/reference/method/cursor.sort/#return-natural-order) order of documents in the collection.
+
+```shell
+const filter = {"title": "Rocky"};
+const doc = {
+  "title": "Rocky",
+  "year": "1976",
+  "writer": "Sylvester Stallone"
+}
+
+db.dbName.replaceOne(filter, doc);
+```
+<sup>*Will replace the first document that matches the filter and replace it with the doc object.*</sup>
+
+Can `find()` a document from the db, update some of its fields, then `replace()` the same document with the updated data.
+
+
+<br><br>
+## Deleting Documents
+Remove documents which match the filter from a database.
+
+```shell
+db.dbName.deleteOne({"_id": ObjectId("5c7c183a81b0c4cb3f559311")});
+```
+
+```shell
+db.dbName.deleteMany({"reviewer_id": 759723314});
+```
 
 
 <br><br>
