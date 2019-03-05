@@ -113,14 +113,17 @@ db.insertMany([], { "ordered": false })
 
 <br><br>
 ## Operators
-These are the operators we can use when updating a document.\
+There are various operaters we can use.
+
+<br><br>
+### Update Operators
 See the [MongoDB Update Operators](https://docs.mongodb.com/manual/reference/operator/update/) documentation.
 
 
-### $set
+#### $set
 Fields to update/add in a document.
 
-### $unset
+#### $unset
 Remove a field from the document.\
 If the field does not exist, then the command does nothing.
 ```shell
@@ -144,11 +147,46 @@ Only updates a field if the value being updated is more than the current value.
 Increments the value of the field by the amount specified.
 
 <br><br>
-#### Working with Arrays
+### Working with Arrays
 There are various operators that are used specifically for Arrays. These can be found in the documentation for update operators.
 
-##### $push
+#### $push
 Add an item to an array.
+
+
+
+<br><br>
+### Query Operators
+We canuse operators within queries.
+See the [Query Operators](https://docs.mongodb.com/manual/reference/operator/query/) documentation.
+
+#### Comparison Operators
+`$eq`\
+Matches values that are equal to a specified value.
+
+`$gt`\
+Matches values that are greater than a specified value.
+
+`$gte`\
+Matches values that are greater than or equal to a specified value.
+
+`$in`\
+Matches any of the values specified in an array.
+
+`$lt`\
+Matches values that are less than a specified value.
+
+`$lte`\
+Matches values that are less than or equal to a specified value.
+
+`$ne`\
+Matches all values that are not equal to a specified value.
+
+`$nin`\
+Matches none of the values specified in an array.
+
+
+
 
 <br><br>
 ## Modifiers
