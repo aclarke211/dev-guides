@@ -69,6 +69,9 @@ db.movies.find({"genre": "Action"}, {"year": 0})
 ## Adding Docuemnts
 Insert documents into a database.
 
+<br><br>
+### insertOne()
+When inserting docs, an ObjectId will be automatically generated, unless we specifiy our own ID in the "_id" field.
 
 Add a single document to the database.
 ```shell
@@ -76,9 +79,37 @@ const doc = {"name": "Rocky", "year": 1976};
 db.dbName.insertOne(doc);
 ```
 
+#### Insert into a DB called "moviesScratch"
+```shell
+db.moviesScratch.insertOne({title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726"})
+```
+
+#### Supply your own ID
+```shell
+db.moviesScratch.insertOne({_id: "tt0084726", title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726"})
+```
+
+<br><br>
+### insertMany()
+
+Used to insert multiple documents into a collection.
+
 Add multiple documents to the database.
 ```shell
 db.dbName.insertMany([doc1, doc2]);
+```
+
+#### First Argument is an array
+The array is an array of documents to insert.
+```shell
+db.insertMany([])
+```
+
+#### Can give an optional second argument to insertMany (an options object/document)
+Options for the query of the type object/document.<br>
+Saying ordered: false, will prevent an insertMany command from erroring and stopping when it encounters an error such as a duplicate ID key.
+```shell
+db.insertMany([], { "ordered": false })
 ```
 
 <br><br>
@@ -260,38 +291,6 @@ db.movies.find({"cast": "Jeff Bridges"}).pretty()
 <br><br>
 ### .pretty()
 Get formatted results back.
-
-<br><br>
-### insertOne()
-When inserting docs, an ObjectId will be automatically generated, unless we specifiy our own ID in the "_id" field.
-
-#### Insert into a DB called "moviesScratch"
-```shell
-db.moviesScratch.insertOne({title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726"})
-```
-
-#### Supply our own ID
-```shell
-db.moviesScratch.insertOne({_id: "tt0084726", title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726"})
-```
-
-<br><br>
-### insertMany()
-
-Used to insert multiple documents into a collection.
-
-#### First Argument is an array
-The array is an array of documents to insert.
-```shell
-db.insertMany([])
-```
-
-#### Can give an optional second argument to insertMany (an options object/document)
-Options for the query of the type object/document.<br>
-Saying ordered: false, will prevent an insertMany command from erroring and stopping when it encounters an error such as a duplicate ID key.
-```shell
-db.insertMany([], { "ordered": false })
-```
 
 <br><br>
 ### quit()
