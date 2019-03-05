@@ -215,12 +215,14 @@ Can `find()` a document from the db, update some of its fields, then `replace()`
 ## Deleting Documents
 Remove documents which match the filter from a database.
 
+Delete a single document.
 ```shell
-db.dbName.deleteOne({"_id": ObjectId("5c7c183a81b0c4cb3f559311")});
+db.reviews.deleteOne({"_id": ObjectId("5c7dc858ef24f6a7e5b0770f")});
 ```
 
+Delete multiple documents.
 ```shell
-db.dbName.deleteMany({"reviewer_id": 759723314});
+db.reviews.deleteMany({"reviewer_id": 759723314});
 ```
 
 
