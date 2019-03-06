@@ -173,9 +173,16 @@ Matches values that are greater than or equal to a specified value.
 ```shell
 db.dbName.find({
   "year": { $gte: 1970 }
-}).count()
+})
 ```
-<sup>*Will return the number of documents where the 'year' field is greater than or equal to 1970.*</sup>
+<sup>*Will return the documents where the 'year' field is greater than or equal to 1970.*</sup>
+
+```shell
+db.dbName.find({
+  "year": { $gte: 1970, $lt: 1990 }
+})
+```
+<sup>*Will return the documents where 'year' is greater than or equal to 1970, but is less than 1980.*</sup>
 
 `$in`\
 Matches any of the values specified in an array.
