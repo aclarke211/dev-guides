@@ -185,7 +185,7 @@ Matches all values that are not equal to a specified value.
 `$nin`\
 Matches none of the values specified in an array.
 
-#### Examples
+##### Examples
 Query a single field.
 ```shell
 db.dbName.find({
@@ -222,6 +222,21 @@ db.dbName.find({
 ```
 <sup>*Will return all documents where 'Red' is not present in the 'colours' array.\
 The value of `$nin` must be an array.*</sup>
+
+
+#### Logical Operators
+##### $or
+```shell
+db.movieDetails.find(
+  {
+    $or: [
+      { writers: { $in: ["Ethan Coen"] } },
+      { writers: { $in: ["Joel Coen"] } }
+    ]
+  }
+).count()
+```
+<sup>*Return all documents where the writers array includes a field of either "Ethan Coen" or "Joel Coen".*</sup>
 
 
 <br><br>
