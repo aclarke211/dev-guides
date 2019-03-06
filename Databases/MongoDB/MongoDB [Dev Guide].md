@@ -170,7 +170,8 @@ Matches values that are greater than a specified value.
 Matches values that are greater than or equal to a specified value.
 
 `$in`\
-Matches any of the values specified in an array.
+Matches any of the values specified in an array.\
+Must be an array, even if only using a single value.
 
 `$lt`\
 Matches values that are less than a specified value.
@@ -185,6 +186,7 @@ Matches all values that are not equal to a specified value.
 Matches none of the values specified in an array.
 
 #### Examples
+Query a single field.
 ```shell
 db.dbName.find({
   "year": { $gte: 1970 }
@@ -192,12 +194,17 @@ db.dbName.find({
 ```
 <sup>*Will return the documents where the 'year' field is greater than or equal to 1970.*</sup>
 
+
+Query a single field with two operators.
 ```shell
 db.dbName.find({
   "year": { $gte: 1970, $lt: 1990 }
 })
 ```
+<sup>*Will return the documents where 'year' is greater than or equal to 1970, but is less than 1980.*</sup>
 
+
+Query two fields in a document with multiple operators.
 ```shell
 db.dbName.find({
   "year": { $gte: 1970, $lt: 1990 },
@@ -206,8 +213,15 @@ db.dbName.find({
 ```
 <sup>*Returns all of the documents where 'year' is greater than or equal to 1970, but is less than 1980 and a field in the 'qty' array is either 5 or 10.*</sup>
 
-<sup>*Will return the documents where 'year' is greater than or equal to 1970, but is less than 1980.*</sup>
 
+Arrays that do not contain a field.
+```shell
+db.dbName.find({
+  "colours": { $nin: ["Red"] }
+})
+```
+<sup>*Will return all documents where 'Red' is not present in the 'colours' array.\
+The value of `$nin` must be an array.*</sup>
 
 
 <br><br>
@@ -229,7 +243,7 @@ First argument is a **filter** which defines the documents to target. When updat
 
 The second argument specifies the fields and value being set (updated) in the document.
 
-The `$set` operator is part ofthe `updateOne()` syntax which specifies the fields to be updated in the document.
+The `$set` operator is part of the `updateOne()` syntax which specifies the fields to be updated in the document.
 
 ```shell
 db.moviesScratch.updateOne({
