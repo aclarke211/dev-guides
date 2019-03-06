@@ -74,18 +74,17 @@ When inserting docs, an ObjectId will be automatically generated, unless we spec
 
 Add a single document to the database.
 ```shell
-const doc = {"name": "Rocky", "year": 1976};
-db.dbName.insertOne(doc);
+db.dbName.insertOne({ "name": "Rocky", "year": 1976 });
 ```
 
 #### Insert into a DB called "moviesScratch"
 ```shell
-db.moviesScratch.insertOne({title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726"})
+db.moviesScratch.insertOne({ title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726" })
 ```
 
 #### Supply your own ID
 ```shell
-db.moviesScratch.insertOne({_id: "tt0084726", title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726"})
+db.moviesScratch.insertOne({ _id: "tt0084726", title: "Star Trek II: The Wrath of Khan", year: 1982: imdb: "tt0084726" })
 ```
 
 <br><br>
@@ -170,20 +169,6 @@ Matches values that are greater than a specified value.
 `$gte`\
 Matches values that are greater than or equal to a specified value.
 
-```shell
-db.dbName.find({
-  "year": { $gte: 1970 }
-})
-```
-<sup>*Will return the documents where the 'year' field is greater than or equal to 1970.*</sup>
-
-```shell
-db.dbName.find({
-  "year": { $gte: 1970, $lt: 1990 }
-})
-```
-<sup>*Will return the documents where 'year' is greater than or equal to 1970, but is less than 1980.*</sup>
-
 `$in`\
 Matches any of the values specified in an array.
 
@@ -199,6 +184,29 @@ Matches all values that are not equal to a specified value.
 `$nin`\
 Matches none of the values specified in an array.
 
+#### Examples
+```shell
+db.dbName.find({
+  "year": { $gte: 1970 }
+})
+```
+<sup>*Will return the documents where the 'year' field is greater than or equal to 1970.*</sup>
+
+```shell
+db.dbName.find({
+  "year": { $gte: 1970, $lt: 1990 }
+})
+```
+
+```shell
+db.dbName.find({
+  "year": { $gte: 1970, $lt: 1990 },
+  "qty": { $in: [5, 10] }
+})
+```
+<sup>*Returns all of the documents where 'year' is greater than or equal to 1970, but is less than 1980 and a field in the 'qty' array is either 5 or 10.*</sup>
+
+<sup>*Will return the documents where 'year' is greater than or equal to 1970, but is less than 1980.*</sup>
 
 
 
@@ -212,7 +220,6 @@ Can be used with the $push and $addToSet operators to append multiple items.
 <br><br>
 ## Updating Documents
 
-<br><br>
 ### Update a Single Document
 Documents within the same collection may not always have the same set of fields. Some may include fields that other documents do not have.
 
