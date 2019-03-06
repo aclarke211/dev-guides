@@ -157,7 +157,7 @@ Add an item to an array.
 
 <br><br>
 ### Query Operators
-We canuse operators within queries.
+We can use operators within queries.\
 See the [Query Operators](https://docs.mongodb.com/manual/reference/operator/query/) documentation.
 
 #### Comparison Operators
@@ -169,6 +169,13 @@ Matches values that are greater than a specified value.
 
 `$gte`\
 Matches values that are greater than or equal to a specified value.
+
+```shell
+db.dbName.find({
+  "year": { $gte: 1970 }
+}).count()
+```
+<sup>*Will return the number of documents where the 'year' field is greater than or equal to 1970.*</sup>
 
 `$in`\
 Matches any of the values specified in an array.
@@ -358,8 +365,14 @@ Return documents that match a query.
 db.collectionName.find(QUERY)
 ```
 
+or
+
+```shell
+ddb.dbName.find(QUERY).count()
+```
+
 <br><br>
-### count()
+### .count()
 Return the number of documents that match a query.
 ```shell
 db.collectionName.count(QUERY)
