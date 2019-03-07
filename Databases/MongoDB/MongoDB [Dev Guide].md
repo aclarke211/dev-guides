@@ -224,8 +224,9 @@ db.dbName.find({
 The value of `$nin` must be an array.*</sup>
 
 
-#### Logical Operators
-##### $or
+<br><br>
+### Logical Operators
+#### $or
 ```shell
 db.movieDetails.find(
   {
@@ -237,6 +238,28 @@ db.movieDetails.find(
 ).count()
 ```
 <sup>*Return all documents where the writers array includes a field of either "Ethan Coen" or "Joel Coen".*</sup>
+
+
+<br><br>
+### Element Operators
+
+#### $exists
+Check if a field exists within a document:
+```shell
+db.dbName.find({ title: { $exists: false } })
+```
+<sup>*Returns all documents that do not contain a 'title' field.*</sup>
+
+
+<br><br>
+#### $type
+
+Check if a field within a document is of a certain type:
+
+```shell
+
+```
+
 
 
 <br><br>
