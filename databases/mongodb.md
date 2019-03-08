@@ -16,8 +16,8 @@ Then use the `load()` MongoShell command to add the datset to the database.
 load("dataset.js")
 ```
 
-<br/>
 
+<br><br>
 ### Cursor
 Essentially, the current result being returned, when many results are being returned from a query.\
 A pointer to the current location in a result set. Is returned by the find() command.
