@@ -32,3 +32,26 @@ Example:
 import colorLog from '../../js/color-log.js';
 ```
 
+
+<br><br>
+## Individual Functions
+
+### Export
+We do not always have to export an entire file. We can instead choose certain function from with a JS file which can be imported and accessed in other files.
+
+```js
+export function myFunction() {
+  // Code here
+}
+```
+
+
+### Import
+To import individual files, we need to state the name of the function <sub>(inside curly brackets)</sub>, followed by the location of the file which includes the export function.
+
+We are essentailly de-structuring the functions from within the external javascript file <sub>(i.e. saying create me a function called myFunction based on the function also called myFunction in the external file)</sub>.
+
+```js
+import { myFunction } from '../location-of-file';
+```
+<sup>*Note how the name of the function being imported is the same as the name of the export function.*</sup>
