@@ -308,6 +308,47 @@ db.dbName.find({ $and: [
 Without the $and operator, only the last query for a certain field will be used (the other before it will be ignored).
 
 
+<br><br>
+### Array Operators
+These are helpful when querying fields within an array in a document.
+
+#### $all
+Matches fields within an array in a document.\
+To match, all of the values in the $all query array must be included in the array for the chosen field within a document.\
+They do not have to be in the specified order, or be the only values in the array, they just have to exist somewhere in the array.
+
+```shell
+db.movieDetails.find({ genres: { $all: ["Comedy", "Crime", "Drama"] } })
+```
+<sup>*Returns all documents that include 'Comedy', 'Crime', and 'Drama' within the 'genres' array field.*</sup>
+
+#### $size
+Used to match documents based on the length of an array.\
+The value given to the size operator is the length of the array we are searching for.
+
+```shell
+db.dbName.find({ countries: { $size: 1 } })
+```
+<sup>*Returns all documents where the 'countries' array includes just one field (i.e. length of 1)*</sup>
+
+#### $elemMatch
+Used to search an element within an array field (in a document) for values that match certain criteria.
+
+If we had an array of objects, this would be used over a regular find query as the find query would look in the array to see if any of the arguments match (regardless if they are in the same object or not) which is not what we want.
+
+```shell
+db.dbName.find({ "boxOffice.country": "Germany", "boxOffice.revenue": { $gt: 17 } })
+```
+<sup>*This would return any documents that have a country of 'Germany' in the 'boxOffice' array, and where the 'revenue' field is greater than 17, regardless if the 'revenue' field is in the same object (in the array) as the 'Germany' country field.*</sup>
+
+
+We want to use the $elemMatch operator to make sure that the values 'Germany' and 17 are being matched in the same object within the array.
+
+```shell
+db.dbName.find({ "boxOffice": { $elemMatch: { "country": "Germany", "revenue": { $gt: 17 } } } })
+```
+<sup>*Now, only if the revenue field in the same object as country 'Germany' (in the array) is greater than 17, will the document be returned from the query.*</sup>
+
 
 <br><br>
 ## Modifiers
