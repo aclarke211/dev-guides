@@ -350,6 +350,13 @@ db.dbName.find({ "boxOffice": { $elemMatch: { "country": "Germany", "revenue": {
 <sup>*Now, only if the revenue field in the same object as country 'Germany' (in the array) is greater than 17, will the document be returned from the query.*</sup>
 
 
+### Evaluation Operators
+More detail on for these can be found in the [Evaluation Operators](https://docs.mongodb.com/manual/reference/operator/query-evaluation/) documentation.
+
+#### $regex
+
+
+
 <br><br>
 ## Modifiers
 
