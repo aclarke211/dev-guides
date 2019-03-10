@@ -41,6 +41,11 @@ Limit the fields that are returned in results documents. Allows you to only retu
 
 By defualt, all fields are returned from a request.
 
+```shell
+db.dbName.find({}, { "title": 1 })
+```
+<sup>*Due to the empty document as the filter, this query will the 'title' and '_id' fields from all documents.*</sup>
+
 Only the fields in the query are returned from a projection.
 
 Second argument to the find() method.
