@@ -250,15 +250,62 @@ db.dbName.find({ title: { $exists: false } })
 ```
 <sup>*Returns all documents that do not contain a 'title' field.*</sup>
 
+Another way to check if a field does not exist, is to check for the value of a field being 'null'.\
+However, this method will return all documents where the value of the field is explicitly set to 'null' and the documents that do not contain the field at all.
+
+```shell
+db.dbName.find({ title: null })
+```
+
 
 <br><br>
 #### $type
 
-Check if a field within a document is of a certain type:
+Check if a field within a document is of a certain type.\
+Looking at the "Alias" list in the [$type documentation](https://docs.mongodb.com/manual/reference/operator/query/type/) will help when determining which types of values we can filter by.
 
 ```shell
-
+db.dbName.find({ viewerRating: { $type: "int" } })
 ```
+<sup>*Will return all documents where the value type of the field 'viewerRating* is an 'int' value.</sup>
+
+
+<br><br>
+### Logical Operators
+Additional info can be found in the [Logical Operataors](https://docs.mongodb.com/manual/reference/operator/query-logical/) documentation.
+
+#### $or
+Takes an array as its arguments, used to check if any of the filters match.
+
+```shell
+db.dbName.find({ $or: [
+  { "year": { $gt: 1980 } },
+  { "rating": { $gt: 8 } }
+] })
+```
+<sup>*Returns all documents where either the 'year' field is greater than 1980, or the 'rating' field is greater than 8.*</sup>
+
+
+#### $and
+By default, different parts of a filter are AND by default.
+
+```shell
+db.dbName.find({ "year": 1980, "rating": 8 })
+```
+<sup>*Returns all documents where the year is 1980 and the rating is 8.*</sup>
+
+
+The $and operator is used to filter the same field more than once in a query.
+
+```shell
+db.dbName.find({ $and: [
+  { "year": null },
+  { "year": { $exists: true } }
+] })
+```
+<sup>*Returns documents where the 'year' field is 'null', but the 'year' field does actually exist.*</sup>
+
+Without the $and operator, only the last query for a certain field will be used (the other before it will be ignored).
 
 
 
