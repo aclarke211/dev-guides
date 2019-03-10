@@ -364,7 +364,7 @@ We can use regular expressions in queries with the $regex operator.
 ```shell
 db.dbName.find({ "title": { $regex: /^The .*/ } })
 ```
-<sup>*Will return all documents where the first word in the 'title' field is 'The'. The regex means match the start of the string wth 'The' followed by any character, any number of times.*</sup>
+<sup>*Will return all documents where the first word in the 'title' field is 'The'. The regex means match the start of the string wth 'The ' followed by any character, any number of times.*</sup>
 
 
 
