@@ -22,6 +22,13 @@ module.exports = (title = 'Page Title') => {
 Another way to do this (if you only have 1 function in the .js file) is with export default:
 
 ```js
+export default function functionName() {
+  // Code to be exported
+}
+```
+
+Export an object:
+```js
 export default {
   // Code to be exported
 }
@@ -48,7 +55,7 @@ import colorLog from '../../js/color-log.js';
 We do not always have to export an entire file. We can instead choose certain function from with a JS file which can be imported and accessed in other files.
 
 ```js
-export function myFunction() {
+export function functionName() {
   // Code here
 }
 ```
