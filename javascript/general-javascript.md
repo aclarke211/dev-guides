@@ -12,7 +12,7 @@ If you have a camel case string and you wish to add a space before each capital 
 
 ## Shortcuts
 
-### If / Else
+### If / Else (Ternary)
 A standard if else statement can be written as follows:
 
 ```js
@@ -25,7 +25,7 @@ if (isActive) {
 }
 ```
 
-However, we can write the same code in a single line:
+However, we can write the same code in a single line by using a ternary operator:
 ```js
 const status = isActive ? 'Active' : 'Disabled';
 ```
