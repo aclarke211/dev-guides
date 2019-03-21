@@ -19,6 +19,14 @@ module.exports = (title = 'Page Title') => {
 ```
 <sup>*When imported, this export will simply log whatever 'title' is to the screen.*</sup>
 
+Another way to do this (if you only have 1 function in the .js file) is with export default:
+
+```js
+export default {
+  // Code to be exported
+}
+```
+
 
 ### Import
 To import an entire JS file (module) we just need to give the imported module a name to identify it by, and then state the location of the file we are importing.
