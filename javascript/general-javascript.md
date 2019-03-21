@@ -10,6 +10,8 @@ If you have a camel case string and you wish to add a space before each capital 
 ```
 <sup>*Adds a space before each capital letter in a string, then trims the string so there are no spaces at the beggining or end.*</sup>
 
+
+
 ## Shortcuts
 
 ### If / Else (Ternary)
