@@ -1,5 +1,15 @@
 # General Javascript [Dev Guide]
 
+## Code Snippets
+### String Manipulation
+#### Add Spaces to CamelCase String
+If you have a camel case string and you wish to add a space before each capital letter, append this to the string:
+
+```js
+.split(/(?=[A-Z])/).join(' ').trim()
+```
+<sup>*Adds a space before each capital letter in a string, then trims the string so there are no spaces at the beggining or end.*</sup>
+
 ## Shortcuts
 
 ### If / Else
