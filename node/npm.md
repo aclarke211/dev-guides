@@ -61,6 +61,13 @@ In order to automatically update the project version in a *package.json* file, a
 > The *pre-release* script would be automatically ran first, which increases the version number then commits and pushes the *package.json* change to GitHub.\
 > A **git tag** is also committed, which allows us to easily jump back through the previously released versions of the project.
 
+A placeholder release script (if you do not currently have a platform setup to release on) could be:
+
+```json
+"pre-release": "npm version patch && git push && git push --tags",
+"release": "npm run pre-release && echo \"\\x1b[97m\\x1b[100mNo platform to release on.\\x1b[0m\""
+```
+
 
 #### Refresh Node Modules
 The following script will remove the *node_modules* folder (if it is present in the project).\
