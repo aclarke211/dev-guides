@@ -1,5 +1,43 @@
 # NPM [Dev Guide]
 
+## NPM Commands
+### Packages
+#### Install/Remove packages
+We can run the **install** (or **i** for short) command to install packages.
+
+```powershell
+npm install
+```
+or
+```powershell
+npm i
+```
+
+To install a new or **specific package** we simply specify the name of the package after the install command:
+
+```powershell
+npm i axios
+```
+
+> In the case above, **axios** is the name of the package to install.
+
+We can also specifiy a precise version of a package to install:
+
+```powershell
+npm i axios@0.18.0
+```
+
+To get the latest version of a package:
+```powershell
+npm i axios@latest
+```
+
+To remove a package we can do:
+```powershell
+npm uninstall axios
+```
+
+
 ## Package JSON
 ### NPM Scripts
 The following are NPM Scripts which can be added into the *package.json* file of a project.
