@@ -32,6 +32,13 @@ To get the latest version of a package:
 npm i axios@latest
 ```
 
+To install a package globally on your machine:
+
+```powershell
+npm i -g axios
+```
+
+
 To remove a package we can do:
 ```powershell
 npm uninstall axios
