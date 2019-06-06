@@ -2,6 +2,8 @@
 
 ## Package JSON
 ### NPM Scripts
+The following are NPM Scripts which can be added into the *package.json* file of a project.
+
 #### Automatically Update Project Version
 In order to automatically update the project version in a *package.json* file, add the following to your **npm scripts**:
 
