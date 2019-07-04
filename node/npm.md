@@ -57,8 +57,8 @@ In order to automatically update the project version in a *package.json* file, a
 "release": "npm run pre-release && git push heroku master"
 ```
 
-> We would then run `npm run release` each time we want to release (to Heroku in this example).\
-> The *pre-release* script would be automatically ran first, which increases the version number then commits and pushes the *package.json* change to GitHub.\
+> We would then run `npm run release` each time we want to release (to Heroku in this example).
+> The *pre-release* script would be automatically ran first, which increases the version number then commits and pushes the *package.json* change to GitHub.
 > A **git tag** is also committed, which allows us to easily jump back through the previously released versions of the project.
 
 A placeholder release script (if you do not currently have a platform setup to release on) could be:
@@ -70,10 +70,25 @@ A placeholder release script (if you do not currently have a platform setup to r
 
 
 #### Refresh Node Modules
-The following script will remove the *node_modules* folder (if it is present in the project).\
-The node modules will then be re-installed and it will perform an audit on the packages to see if there are any vulnerabilities present.\
+The following script will remove the *node_modules* folder (if it is present in the project).
+The node modules will then be re-installed and it will perform an audit on the packages to see if there are any vulnerabilities present.
+
 If there are vulnerabilities present, the script will attept to fix these automatically.
 
 ```json
 "refresh:node_modules": "rm -fr node_modules && npm i && npm audit && npm audit fix"
+```
+
+#### Git Commit and Push to Repo
+We can use an NPM script to commit and push to our Git repo.
+
+```json
+"git:commit": "git add . && git commit -m",
+"git:push": "git push --all"
+```
+
+To perform a commit and push we would run the following command:
+
+```powershell
+npm run git:commit -- \"This is the message for the commit.\" && npm run git:push
 ```
