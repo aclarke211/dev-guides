@@ -83,8 +83,8 @@ If there are vulnerabilities present, the script will attept to fix these automa
 We can use an NPM script to commit and push to our Git repo.
 
 ```json
-"git:commit": "git add . && git commit -m",
-"git:push": "git push --all"
+"git:commit": "git add . && git commit --allow-empty -m",
+"git:push": "git push --all",
 ```
 
 To perform a commit and push we would run the following command:
