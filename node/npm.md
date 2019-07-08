@@ -92,3 +92,46 @@ To perform a commit and push we would run the following command:
 ```powershell
 npm run git:commit -- \"This is the message for the commit.\" && npm run git:push
 ```
+
+
+## Command Line
+
+### Print Colours
+Putting these codes before or after a log will change the colour of the logs in teh terminal.
+
+If you do not **reset** the terminal after changing the colour, then the colour change will remain for all logs make to the terminal, until it is reset or the colour is changed again.
+
+You can chain colour changes together, i.e. have a red background and white foreground.
+
+You may need to escape the first '\' in the colour codes if you get an error when implementing a colour change, i.e. `\x1b[0m` to reset the terminal would actually be `\\x1b[0m`, escaping the first slash.
+
+> **KEY**\
+> Fg = Foreground\
+> Bg = Background
+
+#### Actions
+| Colour        | Code          |
+|---------------|---------------|
+| Reset         | \x1b[0m       |
+| Bright        | \x1b[1m       |
+| Dim           | \x1b[2m       |
+| Underscore    | \x1b[4m       |
+| Blink         | \x1b[5m       |
+| Reverse       | \x1b[7m       |
+| Hidden        | \x1b[8m       |
+| FgBlack       | \x1b[30m      |
+| FgRed         | \x1b[31m      |
+| FgGreen       | \x1b[32m      |
+| FgYellow      | \x1b[33m      |
+| FgBlue        | \x1b[34m      |
+| FgMagenta     | \x1b[35m      |
+| FgCyan        | \x1b[36m      |
+| FgWhite       | \x1b[37m      |
+| BgBlack       | \x1b[40m      |
+| BgRed         | \x1b[41m      |
+| BgGreen       | \x1b[42m      |
+| BgYellow      | \x1b[43m      |
+| BgBlue        | \x1b[44m      |
+| BgMagenta     | \x1b[45m      |
+| BgCyan        | \x1b[46m      |
+| BgWhite       | \x1b[47m      |
